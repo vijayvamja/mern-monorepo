@@ -1,0 +1,29 @@
+@import 'src/assets/scss/colors';
+
+.inputBox {
+  max-width: 430px;
+  width: 100%;
+  background-color: $gray-0;
+  color: $black-0;
+  padding: 9px 15px;
+  margin: 2px;
+  border-radius: 5px;
+  border: none;
+
+  &::-webkit-input-placeholder {
+    color: $black-0;
+  }
+  &:-ms-input-placeholder {
+    color:$black-0;
+  }
+  &::placeholder {
+    color: $black-0;
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    border: none;
+    outline: 1px solid $black-0;
+  }
+}

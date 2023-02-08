@@ -1,0 +1,56 @@
+@import 'src/assets/scss/colors';
+
+.button {
+  cursor: pointer;
+  background: $white-0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 0 2px rgba(0, 0, 0, 0.06),
+  0 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+  padding: 8px 16px;
+  color: $black-0;
+  outline: none !important;
+  border: 1px solid $black-0;
+  display: flex;
+  align-items: center;
+
+  > svg {
+    & + * {
+      margin-left: 8px;
+
+      & + svg {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.large {
+    height: 40px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  &.primary {
+    background: $blue-0;
+    border-color: $blue-0;
+    color: $white-0;
+  }
+
+  &.secondary {
+    background: $yellow-0;
+    border-color: $yellow-0;
+    color: $white-0;
+  }
+}

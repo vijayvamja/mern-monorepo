@@ -1,0 +1,30 @@
+{
+  "name": "mern-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"yarn dev --workspace=frontend\" \"yarn dev --workspace=backend\"",
+    "front": "yarn dev --workspace=frontend",
+    "back": "yarn dev --workspace=backend",
+    "prepare": "husky install",
+    "lint": "yarn workspaces run lint"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "devDependencies": {
+    "concurrently": "^7.4.0"
+  },
+  "dependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0"
+  },
+  "resolutions": {
+    "@types/react": "17.0.39",
+    "@types/react-dom": "17.0.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,html,css}": "yarn lint"
+  }
+}
