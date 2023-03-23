@@ -9,10 +9,13 @@
     "prepare": "husky install",
     "lint": "yarn workspaces run lint"
   },
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
+  "workspaces": {
+    "packages": [
+      "frontend",
+      "backend"
+    ],
+    "nohoist": ["husky"]
+  },
   "devDependencies": {
     "concurrently": "^7.4.0"
   },
