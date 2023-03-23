@@ -11,7 +11,7 @@ class UsersRoute implements Routes {
     this.initializeRoutes();
   }
 
-  private initializeRoutes() {
+  private async initializeRoutes() {
     this.router.get(
       `${this.path}`,
       async (
@@ -19,7 +19,8 @@ class UsersRoute implements Routes {
         res: Response,
         next: NextFunction
       ): Promise<void> => {
-        res.send(this.usersService.listUsers());
+        const response = await this.usersService.listUsers();
+        res.send(response);
       }
     );
   }
