@@ -12,7 +12,7 @@ class App {
 
   constructor(routes: Routes[]) {
     this.app = express();
-    this.env = process.env.NODE_ENV || 'development';
+    this.env = process.env.NODE_ENV || "development";
     this.port = process.env.PORT || 8080;
 
     this.app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,8 +38,8 @@ class App {
   }
 
   private initializeRoutes(routes: Routes[]) {
-    routes.forEach(route => {
-      this.app.use('/', route.router);
+    routes.forEach((route) => {
+      this.app.use("/", route.router);
     });
   }
 }
