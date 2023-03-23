@@ -1,6 +1,5 @@
 class UserService {
-  constructor() {}
-  listUsers() {
+  public async listUsers() {
     return [
       {
         id: 1,

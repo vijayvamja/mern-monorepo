@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 
-import classes from "./App.module.scss";
+import classes from "./app.module.scss";
 import PublicLayout from "./layout/PublicLayout";
 import RoutesList from "./routes";
 

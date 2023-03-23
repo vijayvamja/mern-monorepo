@@ -5,8 +5,8 @@
   "scripts": {
     "lint": "prettier --write '**/*.ts'",
     "lint:check": "prettier --check '**/*.ts'",
-    "dev": "nodemon src/app.ts",
-    "start": "node src/app.ts"
+    "dev": "nodemon src/server.ts",
+    "start": "node src/server.ts"
   },
   "author": "Vijay Vamja <vijayvamja2012@gmail.com>",
   "dependencies": {

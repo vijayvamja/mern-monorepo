@@ -1,30 +1,47 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
+dotenv.config();
 
-import loaders from "./loaders";
-import routes from "./routes";
-import { ExpressApp } from "./types/app";
+import { Routes } from "./interfaces/app.interface";
 
-async function main() {
-  // express app
-  const app: ExpressApp = express();
-  app.context = {};
-  await loaders(app);
+class App {
+  public app: express.Application;
+  public env: string;
+  public port: string | number;
 
-  // TODO: apply middleware for cors
+  constructor(routes: Routes[]) {
+    this.app = express();
+    this.env = process.env.NODE_ENV || 'development';
+    this.port = process.env.PORT || 8080;
 
-  // parse application/json
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(bodyParser.json());
+    this.app.get("/health", (req: Request, res: Response) => res.send("OK"));
 
-  app.use("/", routes);
-  app.get("/health", (req: Request, res: Response) => res.send("OK"));
+    // TODO: apply middleware for cors
 
-  const PORT = process.env.PORT || 8080;
-  app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}...`);
-  });
+    this.initializeRoutes(routes);
+  }
 
-  return app;
+  public listen() {
+    this.app.listen(this.port, () => {
+      console.log(`=================================`);
+      console.log(`======= ENV: ${this.env} =======`);
+      console.log(`🚀 App listening on the port ${this.port}`);
+      console.log(`=================================`);
+    });
+  }
+
+  public getServer() {
+    return this.app;
+  }
+
+  private initializeRoutes(routes: Routes[]) {
+    routes.forEach(route => {
+      this.app.use('/', route.router);
+    });
+  }
 }
-main();
+
+export default App;
